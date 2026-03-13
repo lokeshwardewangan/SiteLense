@@ -12,3 +12,5 @@ export const scanRequestSchema = z.object({
 export type ScanRequest = z.infer<typeof scanRequestSchema>;
 
 // History update: 2026-03-13T23:00:30
+
+// Dev session update: 2026-03-13T21:06:14
