@@ -1,5 +1,5 @@
 // hooks/useScan.ts
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import type { ScanResponse } from '@/lib/types/scan.types';
 
 type ScanApiError = { message: string; };
@@ -8,17 +8,17 @@ export const useScan = () => {
   const [data, setData] = useState<ScanResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isRequesting, setIsRequesting] = useState<boolean>(false); // New state
+  const isRequesting = useRef<boolean>(false); // Use ref to prevent dependency changes
 
-  const executeScan = async (url: string) => {
+  const executeScan = useCallback(async (url: string) => {
     // Prevent multiple concurrent requests
-    if (isRequesting) {
+    if (isRequesting.current) {
       console.log('Request already in progress, skipping new one.');
       return;
     }
 
     setIsLoading(true);
-    setIsRequesting(true); // Set requesting flag
+    isRequesting.current = true; // Set requesting flag
     setData(null);
     setError(null);
 
@@ -38,7 +38,7 @@ export const useScan = () => {
       }
 
       setData(result.data as ScanResponse);
-      
+
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -47,9 +47,9 @@ export const useScan = () => {
       }
     } finally {
       setIsLoading(false);
-      setIsRequesting(false); // Reset requesting flag
+      isRequesting.current = false; // Reset requesting flag
     }
-  };
+  }, []);
 
-  return { data, error, isLoading, isRequesting, executeScan }; // Expose isRequesting if needed by UI
+  return { data, error, isLoading, isRequesting: isRequesting.current, executeScan }; // Expose isRequesting if needed by UI
 };

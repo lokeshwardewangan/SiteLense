@@ -11,7 +11,17 @@ SiteLense is a high-performance website scanner designed to provide instant insi
 ![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-F44336?style=for-the-badge&logo=lighthouse&logoColor=white)
 
-## ✨ Why SiteLense?
+## ✨ How It Works
+
+### 🏠 Homepage / Hero Section
+
+Welcome to SiteLense! Our homepage immediately shows you the power of our tool. It provides a glimpse into your website's potential and guides you to start your first scan. (Placeholder for homepage screenshot)
+
+### 🌐 Scan Your Website
+
+Easily enter any website URL to get a comprehensive performance, SEO, and accessibility report. Simply paste the URL into the scanner and let SiteLense do the rest. (Placeholder for scanner page screenshot)
+
+## 💡 Why SiteLense?
 
 - **Instant Performance Check:** See exactly how fast your site loads for real users.
 - **Easy-to-Read Reports:** No complex jargon—get clear scores for speed, SEO, and accessibility.
@@ -27,4 +37,3 @@ SiteLense is a high-performance website scanner designed to provide instant insi
 - [ ] **PDF Export:** Download professional reports to share with your team or clients.
 
 ---
-// Dev session update: 2026-03-17T23:42:15

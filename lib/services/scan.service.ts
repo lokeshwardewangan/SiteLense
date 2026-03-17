@@ -17,8 +17,12 @@ const API_FETCH_TIMEOUT_MS = 15000; // 15 seconds timeout for API request
 const fetchPageSpeedInsights = async (url: string, apiKey?: string): Promise<any> => {
   const params = new URLSearchParams({
     url: url,
-    category: SCAN_CATEGORIES.join(','),
     // strategy: 'mobile', // Defaulting to mobile, can be added as an option
+  });
+
+  // PageSpeed API requires appending category=X&category=Y, not category=X,Y
+  SCAN_CATEGORIES.forEach(category => {
+    params.append('category', category);
   });
 
   let apiUrl = `${PAGESPEED_API_URL}?${params.toString()}`;

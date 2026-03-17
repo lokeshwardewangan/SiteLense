@@ -119,7 +119,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   @keyframes bounce-slow {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(-5%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
@@ -147,6 +148,6 @@
   }
 }
 
-// History update: 2026-03-14T23:00:30
+/* History update: 2026-03-14T23:00:30 */
 
-// Dev session update: 2026-03-14T20:55:46
+/* Dev session update: 2026-03-14T20:55:46 */
