@@ -1,7 +1,7 @@
 // lib/services/scan.service.ts
-import type { ScanRequest } from '@/lib/validators/scan.validator';
-import type { ScanResponse, AuditItem, Metric } from '@/lib/types/scan.types';
-import { createErrorResponse } from '@/lib/utils/error'; // Import error utility
+import type { ScanRequest } from '@/features/scanner/validators/scan.validator';
+import type { ScanResponse, AuditItem, Metric } from '@/features/scanner/types/scan.types';
+import { createErrorResponse } from '@/utils/error'; // Import error utility
 import axios from 'axios';
 
 // Assume PageSpeed Insights API URL and categories are needed

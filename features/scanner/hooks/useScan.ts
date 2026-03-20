@@ -1,6 +1,6 @@
 // hooks/useScan.ts
 import { useState, useCallback, useRef } from 'react';
-import type { ScanResponse } from '@/lib/types/scan.types';
+import type { ScanResponse } from '@/features/scanner/types/scan.types';
 
 type ScanApiError = { message: string };
 

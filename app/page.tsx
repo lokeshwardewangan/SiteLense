@@ -1,12 +1,12 @@
-import { Navbar } from '@/components/navbar';
-import { Hero } from '@/components/hero';
-import { About } from '@/components/about';
-import { FeaturesGrid } from '@/components/features-grid';
-import { LiveScanner } from '@/components/live-scanner';
-import { Supporting } from '@/components/supporting';
-import { Pricing } from '@/components/pricing';
-import { FAQ } from '@/components/faq';
-import { CTA } from '@/components/cta';
+import { Navbar } from '@/components/layouts/navbar';
+import { Hero } from '@/features/landing/components/hero';
+import { About } from '@/features/landing/components/about';
+import { FeaturesGrid } from '@/features/landing/components/features-grid';
+import { LiveScanner } from '@/features/scanner/components/live-scanner';
+import { Supporting } from '@/features/landing/components/supporting';
+import { Pricing } from '@/features/landing/components/pricing';
+import { FAQ } from '@/features/landing/components/faq';
+import { CTA } from '@/features/landing/components/cta';
 
 export default function HomePage() {
   return (

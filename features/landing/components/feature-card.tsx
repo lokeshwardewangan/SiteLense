@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { fadeIn } from '@/lib/animations';
+import { fadeIn } from '@/utils/animations';
 
 interface FeatureCardProps {
   icon: React.ReactNode;

@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Target, Layers, Rocket, Lightbulb } from 'lucide-react';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { FeatureCard } from '@/components/landing/feature-card';
-import { fadeIn } from '@/lib/animations';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { FeatureCard } from '@/features/landing/components/feature-card';
+import { fadeIn } from '@/utils/animations';
 
 export function About() {
   return (

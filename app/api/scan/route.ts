@@ -1,10 +1,10 @@
 // app/api/scan/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { scanRequestSchema } from '@/lib/validators/scan.validator';
-import { performScan } from '@/lib/services/scan.service';
-import { createSuccessResponse } from '@/lib/utils/response';
-import { createErrorResponse } from '@/lib/utils/error';
-import type { ScanResponse } from '@/lib/types/scan.types'; // Import ScanResponse type
+import { scanRequestSchema } from '@/features/scanner/validators/scan.validator';
+import { performScan } from '@/features/scanner/services/scan.service';
+import { createSuccessResponse } from '@/utils/response';
+import { createErrorResponse } from '@/utils/error';
+import type { ScanResponse } from '@/features/scanner/types/scan.types'; // Import ScanResponse type
 
 export const maxDuration = 120; // Set max duration to 2 minutes
 

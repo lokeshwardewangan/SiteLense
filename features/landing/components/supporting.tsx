@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Zap, Shield, BarChart3, Globe2 } from 'lucide-react';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { fadeIn } from '@/lib/animations';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { fadeIn } from '@/utils/animations';
 
 export function Supporting() {
   return (
-    <SectionWrapper className="pb-32">
+    <SectionWrapper className="pb-32 pt-0!">
       <div className="relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/60 p-8 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] backdrop-blur-xl md:p-12">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-3">
           <motion.div variants={fadeIn('right', 0.1)} className="text-center md:text-left">

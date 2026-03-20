@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { fadeIn } from '@/lib/animations';
+import { fadeIn } from '@/utils/animations';
 
 export function CTA() {
   return (
@@ -48,7 +48,7 @@ export function CTA() {
           <Button
             size="lg"
             variant="outline"
-            className="h-14 rounded-2xl border-white/30 px-10 text-lg font-bold text-white transition-all hover:bg-white/10"
+            className="h-14 rounded-2xl border-white/30 px-10 text-lg font-bold text-black transition-all hover:bg-white/10"
           >
             Contact Support
           </Button>

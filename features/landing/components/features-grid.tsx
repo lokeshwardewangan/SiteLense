@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { FeatureCard } from '@/components/landing/feature-card';
-import { GradientText } from '@/components/landing/gradient-text';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { FeatureCard } from '@/features/landing/components/feature-card';
+import { GradientText } from '@/features/landing/components/gradient-text';
 import { Badge } from '@/components/ui/badge';
-import { fadeIn } from '@/lib/animations';
+import { fadeIn } from '@/utils/animations';
 import { ShieldCheck, Zap, Search, Lock, Smartphone, Globe2 } from 'lucide-react';
 
 export function FeaturesGrid() {

@@ -12,9 +12,9 @@ import {
   Search,
   ShieldCheck,
 } from 'lucide-react';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { GradientText } from '@/components/landing/gradient-text';
-import { fadeIn, scaleIn } from '@/lib/animations';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { GradientText } from '@/features/landing/components/gradient-text';
+import { fadeIn, scaleIn } from '@/utils/animations';
 
 export function Hero() {
   return (
@@ -26,9 +26,9 @@ export function Hero() {
         <div className="absolute top-[40%] left-[20%] h-[400px] w-[400px] rounded-full bg-blue-50/30 blur-[100px]" />
       </div>
 
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-12">
         {/* Left Column: Modern Typography & Content */}
-        <div className="flex flex-col gap-8 lg:col-span-2">
+        <div className="flex flex-col gap-8 lg:col-span-7">
           <motion.div variants={fadeIn('right', 0.1)}>
             <div className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50/50 px-3 py-1 pr-4 text-xs font-semibold text-indigo-600 transition-colors hover:bg-indigo-100/50">
               <span className="flex h-5 items-center rounded-full bg-indigo-600 px-2 text-[10px] text-white">
@@ -90,13 +90,13 @@ export function Hero() {
         {/* Right Column: Professional Visual Mockup */}
         <motion.div
           variants={scaleIn(0.4)}
-          className="relative flex items-center justify-center md:col-span-1 lg:col-span-1"
+          className="relative flex items-center justify-center md:col-span-1 lg:col-span-5"
         >
           {/* Background Decorative Rings */}
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-indigo-50/30 blur-2xl" />
 
           {/* Main Application Card */}
-          <div className="relative z-10 overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] backdrop-blur-xl">
+          <div className="relative z-10 overflow-hidden rounded-[2rem] border w-full border-gray-100 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] backdrop-blur-xl">
             <div className="flex flex-col">
               {/* Mockup Header */}
               <div className="flex items-center justify-between border-b border-gray-50 bg-gray-50/30 px-6 py-3">

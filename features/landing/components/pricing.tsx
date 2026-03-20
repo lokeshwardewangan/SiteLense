@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { GradientText } from '@/components/landing/gradient-text';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { GradientText } from '@/features/landing/components/gradient-text';
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Rocket, Building } from 'lucide-react';
-import { fadeIn } from '@/lib/animations';
+import { fadeIn } from '@/utils/animations';
 
 export function Pricing() {
   const plans = [

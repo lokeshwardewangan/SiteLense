@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { GradientText } from '@/components/landing/gradient-text';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { GradientText } from '@/features/landing/components/gradient-text';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -18,7 +18,7 @@ import {
   Globe,
   Activity,
 } from 'lucide-react';
-import { fadeIn, scaleIn } from '@/lib/animations';
+import { fadeIn, scaleIn } from '@/utils/animations';
 
 export function LiveScanner() {
   const [url, setUrl] = useState('');

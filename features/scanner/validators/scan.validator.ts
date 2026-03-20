@@ -5,7 +5,7 @@ import { z } from 'zod';
 export const scanRequestSchema = z.object({
   url: z
     .string({
-      required_error: 'URL is required.',
+      message: 'URL is required.',
     })
     .min(1, 'URL cannot be empty.')
     .url('Please enter a valid URL.'),

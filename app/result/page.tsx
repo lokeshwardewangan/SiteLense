@@ -2,10 +2,10 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { useScan } from '@/hooks/useScan';
-import type { ScanResponse } from '@/lib/types/scan.types';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
+import { useEffect, useState, Suspense } from 'react';
+import { useScan } from '@/features/scanner/hooks/useScan';
+import type { ScanResponse } from '@/features/scanner/types/scan.types';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -21,13 +21,13 @@ import {
 } from 'lucide-react';
 
 // Import local components
-import Loader from '@/components/results/Loader';
-import ScoreCard from '@/components/results/ScoreCard';
-import MetricCard from '@/components/results/MetricCard';
-import ChartCard from '@/components/results/ChartCard';
-import OpportunityCard from '@/components/results/OpportunityCard';
+import Loader from '@/features/scanner/components/Loader';
+import ScoreCard from '@/features/scanner/components/ScoreCard';
+import MetricCard from '@/features/scanner/components/MetricCard';
+import ChartCard from '@/features/scanner/components/ChartCard';
+import OpportunityCard from '@/features/scanner/components/OpportunityCard';
 
-export default function ResultPage() {
+function ResultContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const url = searchParams.get('url');
@@ -134,12 +134,6 @@ export default function ResultPage() {
                         fontSize: '24px',
                         fontWeight: 800,
                       },
-                    },
-                    track: {
-                      background: '#e5e7eb', // Gray-200
-                      strokeWidth: '12',
-                    },
-                    dataLabels: {
                       total: {
                         show: true,
                         label: 'Score',
@@ -152,6 +146,10 @@ export default function ResultPage() {
                           fontWeight: 700,
                         },
                       },
+                    },
+                    track: {
+                      background: '#e5e7eb', // Gray-200
+                      strokeWidth: '12',
                     },
                   },
                 },
@@ -208,7 +206,7 @@ export default function ResultPage() {
                 },
                 grid: {
                   borderColor: '#e5e7eb', // Gray-200
-                  row: { colors: ['transparent', 'transparent'], colors: ['#f9fafb'] },
+                  row: { colors: ['transparent', '#f9fafb'] },
                 },
                 tooltip: {
                   y: {
@@ -253,5 +251,17 @@ export default function ResultPage() {
         </div>
       )}
     </SectionWrapper>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-lg text-gray-500">Loading results...</div>
+      </div>
+    }>
+      <ResultContent />
+    </Suspense>
   );
 }

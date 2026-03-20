@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { GradientText } from '@/components/landing/gradient-text';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { GradientText } from '@/features/landing/components/gradient-text';
 import {
   Accordion,
   AccordionContent,
@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { fadeIn } from '@/lib/animations';
+import { fadeIn } from '@/utils/animations';
 
 export function FAQ() {
   const faqs = [
@@ -61,7 +61,7 @@ export function FAQ() {
         </motion.div>
 
         <motion.div variants={fadeIn('left', 0.2)} className="lg:col-span-3">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}

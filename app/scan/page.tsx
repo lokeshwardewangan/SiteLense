@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Use next/navigation for App Router
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { SectionWrapper } from '@/components/landing/section-wrapper';
-import { GradientText } from '@/components/landing/gradient-text';
+import { SectionWrapper } from '@/components/shared/section-wrapper';
+import { GradientText } from '@/features/landing/components/gradient-text';
 import { ArrowRight } from 'lucide-react';
 
 export default function ScanPage() {

@@ -53,7 +53,7 @@ export const scaleIn = (delay: number = 0): Variants => ({
 
 export const slideIn = (
   direction: 'up' | 'down' | 'left' | 'right',
-  type: string,
+  type: any,
   delay: number,
   duration: number
 ): Variants => ({
