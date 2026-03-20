@@ -21,11 +21,12 @@ export default function ScanPage() {
       setError('Please enter a URL.');
       return;
     }
+    const fullUrl = `https://${url}`;
     try {
-      new URL(url); // Basic URL validation
+      new URL(fullUrl); // Basic URL validation
       setError('');
       setIsSubmitting(true); // Disable button while navigating
-      router.push(`/result?url=${encodeURIComponent(url)}`);
+      router.push(`/result?url=${encodeURIComponent(fullUrl)}`);
       // Note: The API call happens on the next page load, so button remains disabled until user navigates away or returns.
     } catch (err) {
       setError('Please enter a valid URL.');
@@ -35,12 +36,7 @@ export default function ScanPage() {
 
   return (
     <SectionWrapper className="pt-28 md:pt-40">
-      {/* Background Premium Gradients */}
-      <div className="absolute top-0 left-1/2 -z-10 h-[1000px] w-full -translate-x-1/2 overflow-hidden opacity-60">
-        <div className="absolute top-[-10%] left-[-15%] h-[600px] w-[600px] rounded-full bg-indigo-50/50 blur-[120px]" />
-        <div className="absolute top-[5%] right-[-10%] h-[500px] w-[500px] rounded-full bg-purple-50/50 blur-[120px]" />
-        <div className="absolute top-[40%] left-[20%] h-[400px] w-[400px] rounded-full bg-blue-50/30 blur-[100px]" />
-      </div>
+
 
       <div className="flex flex-col items-center justify-center space-y-8 text-center">
         <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-7xl/tight">
@@ -55,15 +51,23 @@ export default function ScanPage() {
         </p>
 
         <form onSubmit={handleSubmit} className="flex w-full max-w-2xl flex-col gap-4 sm:flex-row">
-          <Input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter website URL (e.g., https://example.com)"
-            className="h-14 flex-grow px-6 text-lg"
-            required
-            disabled={isSubmitting} // Disable input while submitting
-          />
+          <div className="group relative flex flex-grow items-center overflow-hidden rounded-2xl border-2 border-gray-100 bg-white transition-all focus-within:border-indigo-500/50 focus-within:ring-4 focus-within:ring-indigo-500/10">
+            <div className="flex h-14 items-center pl-4 pr-0 font-semibold text-black/60 text-lg tracking-tight select-none">
+              https://
+            </div>
+            <Input
+              type="text"
+              value={url}
+              onChange={(e) => {
+                const val = e.target.value.replace(/^https?:\/\//, '');
+                setUrl(val);
+              }}
+              placeholder="example.com"
+              className="h-14 border-0 bg-transparent px-4 ps-1 text-lg shadow-none focus-visible:ring-0"
+              required
+              disabled={isSubmitting} // Disable input while submitting
+            />
+          </div>
           <Button
             type="submit"
             size="lg"

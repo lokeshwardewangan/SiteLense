@@ -1,18 +1,28 @@
-// components/results/MetricCard.tsx
+// features/scanner/components/MetricCard.tsx
+'use client';
+
 import React from 'react';
+import { cn } from '@/lib/utils';
+import { GlassCard } from '@/components/ui/dashboard-elements';
 
 type MetricCardProps = {
   label: string;
   value: string;
+  icon: any;
 };
 
-const MetricCard: React.FC<MetricCardProps> = ({ label, value }) => {
-  return (
-    <div className="flex flex-col items-start justify-center rounded-2xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-300 ease-in-out hover:border-indigo-200 hover:shadow-xl">
-      <div className="mb-2 text-sm font-bold tracking-wider text-gray-500 uppercase">{label}</div>
-      <div className="text-3xl font-black text-gray-900">{value}</div>
+const MetricCard: React.FC<MetricCardProps> = ({ label, value, icon: Icon }) => (
+  <GlassCard className="group p-5 transition-all hover:-translate-y-1">
+    <div className="flex items-center gap-4">
+      <div className="flex size-12 items-center justify-center rounded-xl bg-linear-to-br from-indigo-500 to-purple-600 text-white shadow-lg transition-transform group-hover:scale-110">
+        <Icon className="size-6" />
+      </div>
+      <div>
+        <div className="text-xs font-bold uppercase tracking-widest text-gray-400">{label}</div>
+        <div className="text-2xl font-black text-gray-900 dark:text-white">{value}</div>
+      </div>
     </div>
-  );
-};
+  </GlassCard>
+);
 
 export default MetricCard;

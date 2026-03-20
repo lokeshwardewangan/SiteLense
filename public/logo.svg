@@ -1,0 +1,70 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A1F6E"/>
+      <stop offset="100%" stop-color="#2D3BCC"/>
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6C8FFF"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4F6EFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#A5B8FF"/>
+    </linearGradient>
+    <clipPath id="circClip">
+      <circle cx="100" cy="100" r="70"/>
+    </clipPath>
+  </defs>
+
+  <!-- Outer rings -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#3B5CF5" stroke-width="1.5" opacity="0.2"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#6C8FFF" stroke-width="1"
+    stroke-dasharray="5 7" opacity="0.35"/>
+
+  <!-- Main body -->
+  <circle cx="100" cy="100" r="72" fill="url(#bgGrad)"/>
+  <circle cx="100" cy="100" r="72" fill="none" stroke="#4F6EFF" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- Grid lines -->
+  <g clip-path="url(#circClip)" opacity="0.1">
+    <line x1="30" y1="80" x2="170" y2="80" stroke="#fff" stroke-width="0.8"/>
+    <line x1="30" y1="100" x2="170" y2="100" stroke="#fff" stroke-width="0.8"/>
+    <line x1="30" y1="120" x2="170" y2="120" stroke="#fff" stroke-width="0.8"/>
+    <line x1="70" y1="40" x2="70" y2="160" stroke="#fff" stroke-width="0.8"/>
+    <line x1="100" y1="40" x2="100" y2="160" stroke="#fff" stroke-width="0.8"/>
+    <line x1="130" y1="40" x2="130" y2="160" stroke="#fff" stroke-width="0.8"/>
+  </g>
+
+  <!-- Bars -->
+  <g clip-path="url(#circClip)">
+    <rect x="58" y="108" width="12" height="30" rx="3" fill="url(#barGrad)" opacity="0.85"/>
+    <rect x="75" y="90"  width="12" height="48" rx="3" fill="url(#barGrad)"/>
+    <rect x="92" y="99"  width="12" height="39" rx="3" fill="url(#barGrad)" opacity="0.9"/>
+    <rect x="109" y="82" width="12" height="56" rx="3" fill="url(#barGrad)"/>
+    <rect x="126" y="94" width="12" height="44" rx="3" fill="url(#barGrad)" opacity="0.85"/>
+  </g>
+
+  <!-- Trend line -->
+  <polyline points="64,104 81,87 98,95 115,78 132,90"
+    fill="none" stroke="#A5B8FF" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round" clip-path="url(#circClip)"/>
+  <circle cx="64"  cy="104" r="3" fill="#fff" clip-path="url(#circClip)"/>
+  <circle cx="81"  cy="87"  r="3" fill="#fff" clip-path="url(#circClip)"/>
+  <circle cx="98"  cy="95"  r="3" fill="#fff" clip-path="url(#circClip)"/>
+  <circle cx="115" cy="78"  r="3.5" fill="#A5B8FF" clip-path="url(#circClip)"/>
+  <circle cx="132" cy="90"  r="3" fill="#fff" clip-path="url(#circClip)"/>
+
+  <!-- Scan arc -->
+  <path d="M 152 58 A 52 52 0 0 1 162 100"
+    fill="none" stroke="url(#arcGrad)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="162" cy="100" r="4.5" fill="#A78BFA"/>
+  <circle cx="162" cy="100" r="2.5" fill="#fff"/>
+
+  <!-- Handle -->
+  <line x1="148" y1="148" x2="168" y2="168"
+    stroke="url(#arcGrad)" stroke-width="5.5" stroke-linecap="round"/>
+
+  <!-- Lens ring -->
+  <circle cx="100" cy="100" r="54" fill="none" stroke="#5B7BFF" stroke-width="3" opacity="0.6"/>
+</svg>

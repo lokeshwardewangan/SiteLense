@@ -138,7 +138,13 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground min-h-screen 
+bg-gradient-to-br 
+from-indigo-50/40 
+via-indigo-100/30 
+to-purple-50/40 
+selection:bg-indigo-100 
+selection:text-indigo-700;
     font-family: var(--font-overpass), sans-serif;
   }
   html {

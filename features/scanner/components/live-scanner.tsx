@@ -19,6 +19,7 @@ import {
   Activity,
 } from 'lucide-react';
 import { fadeIn, scaleIn } from '@/utils/animations';
+import Link from 'next/link';
 
 export function LiveScanner() {
   const [url, setUrl] = useState('');
@@ -75,13 +76,18 @@ export function LiveScanner() {
         <Card className="overflow-hidden border-2 border-indigo-100 shadow-2xl shadow-indigo-100/50">
           <CardHeader className="bg-indigo-50/30 pb-8">
             <div className="flex flex-col gap-3 sm:flex-row">
-              <div className="relative flex-1">
-                <Globe className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-gray-400" />
+              <div className="group relative flex flex-1 items-center overflow-hidden rounded-xl border border-gray-200 bg-white transition-all focus-within:border-indigo-500/50 focus-within:ring-4 focus-within:ring-indigo-500/10">
+                <div className="flex h-12 items-center border-r border-gray-100 bg-gray-50/50 px-4 font-bold text-gray-400 text-sm tracking-tight select-none">
+                  https://
+                </div>
                 <Input
-                  placeholder="https://yourwebsite.com"
-                  className="h-12 rounded-xl border-gray-200 bg-white pl-10 focus-visible:ring-indigo-500"
+                  placeholder="yourwebsite.com"
+                  className="h-12 w-full border-0 bg-transparent px-3 text-sm shadow-none focus-visible:ring-0"
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/^https?:\/\//, '');
+                    setUrl(val);
+                  }}
                 />
               </div>
               <Button
@@ -197,7 +203,9 @@ export function LiveScanner() {
                       variant="outline"
                       className="mt-4 w-full rounded-xl border-gray-200 font-bold"
                     >
-                      View Full Detailed Report
+                      <Link href="/scan" >
+                        View Full Detailed Report
+                      </Link>
                     </Button>
                   </div>
                 </div>

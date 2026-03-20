@@ -16,7 +16,12 @@ import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { GradientText } from '@/features/landing/components/gradient-text';
 import { fadeIn, scaleIn } from '@/utils/animations';
 
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 export function Hero() {
+  const router = useRouter();
+
   return (
     <SectionWrapper className="pt-28 md:pt-40">
       {/* Background Premium Gradients */}
@@ -63,9 +68,10 @@ export function Hero() {
           <motion.div variants={fadeIn('right', 0.4)} className="flex flex-wrap gap-4">
             <Button
               size="lg"
+              onClick={() => router.push('/scan')}
               className="group h-14 rounded-2xl bg-indigo-600 px-8 text-base font-semibold shadow-2xl shadow-indigo-200/50 transition-all hover:bg-indigo-700 active:scale-95"
             >
-              Start Free Scan
+              Scan Now
               <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
@@ -73,7 +79,9 @@ export function Hero() {
               variant="outline"
               className="h-14 rounded-2xl border-gray-200 bg-white px-8 text-base font-semibold text-gray-700 transition-all hover:bg-gray-50 active:scale-95"
             >
-              View Live Demo
+              <Link href="/scan" >
+                View Live Demo
+              </Link>
             </Button>
           </motion.div>
 
@@ -96,7 +104,7 @@ export function Hero() {
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-indigo-50/30 blur-2xl" />
 
           {/* Main Application Card */}
-          <div className="relative z-10 overflow-hidden rounded-[2rem] border w-full border-gray-100 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] backdrop-blur-xl">
+          <div className="relative z-10 w-full overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] backdrop-blur-xl">
             <div className="flex flex-col">
               {/* Mockup Header */}
               <div className="flex items-center justify-between border-b border-gray-50 bg-gray-50/30 px-6 py-3">

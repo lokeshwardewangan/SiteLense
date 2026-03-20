@@ -4,9 +4,12 @@ import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { fadeIn } from '@/utils/animations';
 
 export function CTA() {
+  const router = useRouter();
+
   return (
     <SectionWrapper
       variant="gradient"
@@ -40,9 +43,10 @@ export function CTA() {
         <motion.div variants={fadeIn('up', 0.4)} className="flex flex-col gap-4 pt-4 sm:flex-row">
           <Button
             size="lg"
+            onClick={() => router.push('/scan')}
             className="h-14 rounded-2xl bg-white px-10 text-lg font-bold text-indigo-600 shadow-xl transition-all hover:scale-105 hover:bg-gray-50"
           >
-            Get Started Now
+            Get Started
             <ArrowRight className="ml-2 size-5" />
           </Button>
           <Button

@@ -2,10 +2,8 @@
 import type { Metadata } from 'next';
 import '../styles/globals.css'; // Assuming this is the global CSS file
 import { Overpass } from 'next/font/google'; // Assuming Inter font is used
-import Providers from '@/app/providers'; // Assuming Providers component exists
-
-// Assuming these are available from project context
-// import { cn } from '@/lib/utils'; // For class merging if needed
+import Providers from '@/app/providers';
+import { Navbar } from '@/components/layouts/navbar';
 
 const overpass = Overpass({
   variable: '--font-overpass',
@@ -13,19 +11,43 @@ const overpass = Overpass({
 });
 
 export const metadata: Metadata = {
-  title: 'SiteLens - Website Performance Scanner',
+  title: {
+    default: 'SiteLens | Modern Website Performance Scanner',
+    template: '%s | SiteLens',
+  },
   description:
-    "Analyze your website\\'s performance, SEO, accessibility, and best practices with SiteLens. Get actionable insights to improve your website speed and user experience.",
-  keywords:
-    'website performance, seo analysis, accessibility check, page speed, lighthouse, web vitals, site scan',
-  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+    'SiteLens is a premium website performance scanner. Analyze your speed, SEO, accessibility, and security in seconds with our advanced auditing engine.',
+  keywords: [
+    'website performance',
+    'seo analysis',
+    'security audit',
+    'page speed',
+    'lighthouse scan',
+    'web vitals',
+    'sitelens',
+  ],
+  icons: {
+    icon: '/logo.svg',
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#4F46E5',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={overpass.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
