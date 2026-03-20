@@ -50,6 +50,5 @@ Experience a premium SaaS dashboard with real-time performance metrics, interact
 - [ ] **Site History:** Compare your progress over weeks and months.
 - [ ] **Mobile vs. Desktop:** See how your site performs on phones vs. computers.
 - [ ] **Email Alerts:** Get notified immediately if your site's performance drops.
-- [ ] **PDF Export:** Download professional reports to share with your team or clients.
 
 ---

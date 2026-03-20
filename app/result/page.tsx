@@ -2,7 +2,8 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, Suspense, useMemo } from 'react';
+import { useEffect, Suspense, useMemo, useRef } from 'react';
+import { usePdfExport } from '@/hooks/usePdfExport';
 import { useScan } from '@/features/scanner/hooks/useScan';
 import { SectionWrapper } from '@/components/shared/section-wrapper';
 import { Button } from '@/components/ui/button';
@@ -12,7 +13,6 @@ import {
   Activity,
   CheckCircle2,
   Search,
-  ShieldCheck,
   ExternalLink,
   Timer,
   Gauge,
@@ -21,6 +21,8 @@ import {
   ArrowUpRight,
   AlertCircle,
   Clock,
+  Download,
+  Loader2,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GlassCard, GradientHeading } from '@/components/ui/dashboard-elements';
@@ -30,6 +32,7 @@ import ScoreCard from '@/features/scanner/components/ScoreCard';
 import ChartCard from '@/features/scanner/components/ChartCard';
 import MetricCard from '@/features/scanner/components/MetricCard';
 import OpportunityCard from '@/features/scanner/components/OpportunityCard';
+import PdfReport from '@/features/scanner/components/PdfReport';
 import { useConfetti } from '@/hooks/useConfetti';
 
 // --- Main Page Logic ---
@@ -41,6 +44,11 @@ function ResultContent() {
 
   const { data, error, isLoading, executeScan } = useScan();
   const { fireConfetti } = useConfetti();
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const pdfRef = useRef<HTMLDivElement>(null); // Dedicated ref for high-quality PDF export
+  const { exportToPdf, isGenerating } = usePdfExport(
+    `site-report-${url ? new URL(url).hostname : 'analysis'}.pdf`
+  );
 
   useEffect(() => {
     if (url) {
@@ -234,6 +242,7 @@ function ResultContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-12"
+          ref={resultsRef}
         >
           {/* Header Section */}
           <div className="text-center">
@@ -261,6 +270,29 @@ function ResultContent() {
             <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-gray-500">
               Complete performance audit and optimization report for your digital asset.
             </p>
+
+            {/* Download PDF Button */}
+            <div className="mt-8 flex justify-center" data-pdf-ignore="true">
+              <Button
+                onClick={() => exportToPdf(pdfRef.current)}
+                disabled={isGenerating}
+                className="group relative h-12 overflow-hidden rounded-2xl bg-linear-to-r from-indigo-600 to-purple-600 px-8 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-indigo-300 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                <span className="relative flex items-center gap-2.5">
+                  {isGenerating ? (
+                    <>
+                      <Loader2 className="size-4 animate-spin" />
+                      Generating PDF…
+                    </>
+                  ) : (
+                    <>
+                      <Download className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                      Download PDF Report
+                    </>
+                  )}
+                </span>
+              </Button>
+            </div>
           </div>
 
           {/* Top Score Cards Summary */}
@@ -379,6 +411,13 @@ function ResultContent() {
             </div>
           </div>
         </motion.div>
+      )}
+
+      {/* Off-screen PDF-friendly layout for high-quality capture */}
+      {data && (
+        <div style={{ position: 'absolute', left: '-9999px', top: '0', zIndex: -1 }}>
+          <PdfReport ref={pdfRef} data={data} hostname={hostname || ''} url={url || ''} />
+        </div>
       )}
     </SectionWrapper>
   );
