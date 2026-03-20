@@ -77,7 +77,7 @@ export function LiveScanner() {
           <CardHeader className="bg-indigo-50/30 pb-8">
             <div className="flex flex-col gap-3 sm:flex-row">
               <div className="group relative flex flex-1 items-center overflow-hidden rounded-xl border border-gray-200 bg-white transition-all focus-within:border-indigo-500/50 focus-within:ring-4 focus-within:ring-indigo-500/10">
-                <div className="flex h-12 items-center border-r border-gray-100 bg-gray-50/50 px-4 font-bold text-gray-400 text-sm tracking-tight select-none">
+                <div className="flex h-12 items-center border-r border-gray-100 bg-gray-50/50 px-4 text-sm font-bold tracking-tight text-gray-400 select-none">
                   https://
                 </div>
                 <Input
@@ -203,9 +203,7 @@ export function LiveScanner() {
                       variant="outline"
                       className="mt-4 w-full rounded-xl border-gray-200 font-bold"
                     >
-                      <Link href="/scan" >
-                        View Full Detailed Report
-                      </Link>
+                      <Link href="/scan">View Full Detailed Report</Link>
                     </Button>
                   </div>
                 </div>

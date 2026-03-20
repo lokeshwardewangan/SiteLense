@@ -36,8 +36,6 @@ export default function ScanPage() {
 
   return (
     <SectionWrapper className="pt-28 md:pt-40">
-
-
       <div className="flex flex-col items-center justify-center space-y-8 text-center">
         <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-7xl/tight">
           Scan Your Website's <br />
@@ -52,7 +50,7 @@ export default function ScanPage() {
 
         <form onSubmit={handleSubmit} className="flex w-full max-w-2xl flex-col gap-4 sm:flex-row">
           <div className="group relative flex flex-grow items-center overflow-hidden rounded-2xl border-2 border-gray-100 bg-white transition-all focus-within:border-indigo-500/50 focus-within:ring-4 focus-within:ring-indigo-500/10">
-            <div className="flex h-14 items-center pl-4 pr-0 font-semibold text-black/60 text-lg tracking-tight select-none">
+            <div className="flex h-14 items-center pr-0 pl-4 text-lg font-semibold tracking-tight text-black/60 select-none">
               https://
             </div>
             <Input

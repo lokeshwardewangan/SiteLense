@@ -18,7 +18,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ label, value, icon: Icon }) => 
         <Icon className="size-6" />
       </div>
       <div>
-        <div className="text-xs font-bold uppercase tracking-widest text-gray-400">{label}</div>
+        <div className="text-xs font-bold tracking-widest text-gray-400 uppercase">{label}</div>
         <div className="text-2xl font-black text-gray-900 dark:text-white">{value}</div>
       </div>
     </div>

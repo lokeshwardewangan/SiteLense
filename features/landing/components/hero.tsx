@@ -79,9 +79,7 @@ export function Hero() {
               variant="outline"
               className="h-14 rounded-2xl border-gray-200 bg-white px-8 text-base font-semibold text-gray-700 transition-all hover:bg-gray-50 active:scale-95"
             >
-              <Link href="/scan" >
-                View Live Demo
-              </Link>
+              <Link href="/scan">View Live Demo</Link>
             </Button>
           </motion.div>
 

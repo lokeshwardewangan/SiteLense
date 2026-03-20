@@ -10,15 +10,11 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
         <Link href="/" className="flex cursor-pointer items-center gap-0.5">
           <div className="flex size-10 items-center justify-center rounded-xl transition-transform active:scale-95">
-            <Image
-              src="/logo.svg"
-              alt="SiteLens Logo"
-              width={32}
-              height={32}
-              className="size-9"
-            />
+            <Image src="/logo.svg" alt="SiteLens Logo" width={32} height={32} className="size-9" />
           </div>
-          <GradientText className="text-xl font-black tracking-tighter relative top-0.5">SiteLens</GradientText>
+          <GradientText className="relative top-0.5 text-xl font-black tracking-tighter">
+            SiteLens
+          </GradientText>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -41,14 +37,13 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-
           <Link href="/scan">
             <Button
               size="sm"
-              className="cursor-pointer rounded-lg bg-indigo-600 font-bold pt-1 h-9 flex justify-center items-center text-white shadow-lg shadow-indigo-100 pl-4 transition-all hover:bg-indigo-700 active:scale-95"
+              className="flex h-9 cursor-pointer items-center justify-center rounded-lg bg-indigo-600 pt-1 pl-4 font-bold text-white shadow-lg shadow-indigo-100 transition-all hover:bg-indigo-700 active:scale-95"
             >
               Scan Now
-              <ChevronRight className="ml-0.5 size-4 relative -top-0.5" />
+              <ChevronRight className="relative -top-0.5 ml-0.5 size-4" />
             </Button>
           </Link>
         </div>
