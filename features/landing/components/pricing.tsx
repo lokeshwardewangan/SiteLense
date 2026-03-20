@@ -14,9 +14,11 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Check, Zap, Rocket, Building } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { fadeIn } from '@/utils/animations';
 
 export function Pricing() {
+  const router = useRouter();
   const plans = [
     {
       name: 'Starter',
@@ -24,7 +26,7 @@ export function Pricing() {
       price: '$0',
       description: 'Perfect for personal blogs and small projects.',
       features: ['3 Scans per day', 'Mobile Audit', 'SEO Basics', 'Standard Speed Report'],
-      cta: 'Start for free',
+      cta: 'Try Now',
       popular: false,
     },
     {
@@ -127,6 +129,11 @@ export function Pricing() {
               </CardContent>
               <CardFooter className="mt-auto border-t-0 bg-transparent p-8 pt-0">
                 <Button
+                  onClick={() => {
+                    if (plan.cta !== 'Contact Sales') {
+                      router.push('/scan');
+                    }
+                  }}
                   className={`h-12 w-full rounded-xl text-sm font-bold ${plan.popular ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700' : 'bg-gray-900 text-white hover:bg-gray-800'}`}
                 >
                   {plan.cta}

@@ -1,53 +1,86 @@
-// components/results/ScoreCard.tsx
+// features/scanner/components/ScoreCard.tsx
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { GlassCard } from '@/components/ui/dashboard-elements';
 
 type ScoreCardProps = {
   title: string;
   score: number;
+  icon: any;
+  colorClass: string;
 };
 
-const ScoreCard: React.FC<ScoreCardProps> = ({ title, score }) => {
-  const getRingColor = (s: number) => {
-    if (s >= 90) return 'text-emerald-500';
-    if (s >= 70) return 'text-amber-500';
-    return 'text-red-500';
+const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, icon: Icon, colorClass }) => {
+  const getProgressColor = (s: number) => {
+    if (s >= 90) return '#10b981'; // emerald-500
+    if (s >= 75) return '#f59e0b'; // amber-500
+    return '#ef4444'; // red-500
   };
 
-  const radius = 70;
+  const radius = 65;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * score) / 100;
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white p-6 shadow-lg transition-all duration-300 ease-in-out hover:border-indigo-200 hover:shadow-xl">
-      <div className="relative size-40">
-        <svg className="size-full -rotate-90" viewBox="0 0 160 160">
-          <circle
-            cx="80"
-            cy="80"
-            r={radius}
-            fill="none"
-            stroke="#e5e7eb" // Gray-200
-            strokeWidth="12"
-          />
-          <circle
-            cx="80"
-            cy="80"
-            r={radius}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="12"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            strokeLinecap="round"
-            className={`${getRingColor(score)} transition-all duration-500 ease-out`}
-          />
-        </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className={`text-5xl font-black ${getRingColor(score)}`}>{score}</span>
-          <span className="text-lg font-bold text-gray-700">{title}</span>
+    <GlassCard className="group p-6">
+      <div className="absolute -top-4 -right-4 size-24 bg-linear-to-br from-indigo-500/10 to-purple-500/10 blur-3xl transition-all group-hover:from-indigo-500/20 group-hover:to-purple-500/20" />
+
+      <div className="relative flex flex-col items-center">
+        <div className="relative mb-4 size-44">
+          <svg className="size-full -rotate-90" viewBox="0 0 160 160">
+            {/* Background Track */}
+            <circle
+              cx="80"
+              cy="80"
+              r={radius}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="10"
+              className="text-gray-100 dark:text-gray-800"
+            />
+            {/* Animated Progress Ring */}
+            <motion.circle
+              cx="80"
+              cy="80"
+              r={radius}
+              fill="none"
+              stroke={getProgressColor(score)}
+              strokeWidth="12"
+              strokeDasharray={circumference}
+              initial={{ strokeDashoffset: circumference }}
+              animate={{ strokeDashoffset }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              strokeLinecap="round"
+              className="drop-shadow-[0_0_8px_rgba(0,0,0,0.1)]"
+            />
+          </svg>
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="flex flex-col items-center"
+            >
+              <div className="mb-1 rounded-full bg-gray-50 p-2 dark:bg-gray-800">
+                <Icon className={cn('size-5', colorClass)} />
+              </div>
+              <span className="text-4xl font-black tracking-tighter text-gray-900 dark:text-white">
+                {score}
+              </span>
+            </motion.div>
+          </div>
+        </div>
+
+        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">{title}</h3>
+        <div className={cn('mt-1 text-xs font-semibold tracking-wider uppercase', colorClass)}>
+          {score >= 90 ? 'Excellent' : score >= 75 ? 'Good' : 'Needs Work'}
         </div>
       </div>
-    </div>
+    </GlassCard>
   );
 };
 

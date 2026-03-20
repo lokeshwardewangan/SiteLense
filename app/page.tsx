@@ -1,4 +1,3 @@
-import { Navbar } from '@/components/layouts/navbar';
 import { Hero } from '@/features/landing/components/hero';
 import { About } from '@/features/landing/components/about';
 import { FeaturesGrid } from '@/features/landing/components/features-grid';
@@ -8,10 +7,11 @@ import { Pricing } from '@/features/landing/components/pricing';
 import { FAQ } from '@/features/landing/components/faq';
 import { CTA } from '@/features/landing/components/cta';
 
+import { GradientText } from '@/features/landing/components/gradient-text';
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-linear-to-br from-indigo-50/70 via-white to-slate-100/50 selection:bg-indigo-100 selection:text-indigo-700">
-      <Navbar />
+    <main className="min-h-screen">
       <Hero />
       <div className="space-y-8">
         <Supporting />
@@ -31,7 +31,7 @@ export default function HomePage() {
               <div className="flex size-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
                 <span className="text-xs font-black">SL</span>
               </div>
-              <span className="text-xl font-black tracking-tight text-gray-900">SiteLens</span>
+              <GradientText className="text-xl font-black tracking-tighter">SiteLens</GradientText>
             </div>
             <p className="text-sm font-bold text-gray-400">
               © {new Date().getFullYear()} SiteLens. Built for the modern web.

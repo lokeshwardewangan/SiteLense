@@ -7,7 +7,7 @@ import { fadeIn } from '@/utils/animations';
 
 export function Supporting() {
   return (
-    <SectionWrapper className="pb-32 pt-0!">
+    <SectionWrapper className="pt-0! pb-32">
       <div className="relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/60 p-8 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] backdrop-blur-xl md:p-12">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-3">
           <motion.div variants={fadeIn('right', 0.1)} className="text-center md:text-left">

@@ -7,4 +7,7 @@ echo "====================================="
 
 npm run format
 
-echo "✅ Formatting complete!"
+echo "📦 Re-staging formatted files..."
+git add .
+
+echo "✅ Formatting complete."
