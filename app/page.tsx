@@ -7,7 +7,7 @@ import { Pricing } from '@/features/landing/components/pricing';
 import { FAQ } from '@/features/landing/components/faq';
 import { CTA } from '@/features/landing/components/cta';
 
-import { GradientText } from '@/features/landing/components/gradient-text';
+import { Footer } from '@/components/layouts/footer';
 
 export default function HomePage() {
   return (
@@ -23,33 +23,7 @@ export default function HomePage() {
         <CTA />
       </div>
 
-      {/* Small Footer to keep it professional */}
-      <footer className="border-t border-gray-100 bg-white/40 py-16 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-            <div className="flex items-center gap-2">
-              <div className="flex size-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                <span className="text-xs font-black">SL</span>
-              </div>
-              <GradientText className="text-xl font-black tracking-tighter">SiteLens</GradientText>
-            </div>
-            <p className="text-sm font-bold text-gray-400">
-              © {new Date().getFullYear()} SiteLens. Built for the modern web.
-            </p>
-            <div className="flex gap-8 text-sm font-bold text-gray-500">
-              <a href="#" className="transition-colors hover:text-indigo-600">
-                Twitter
-              </a>
-              <a href="#" className="transition-colors hover:text-indigo-600">
-                GitHub
-              </a>
-              <a href="#" className="transition-colors hover:text-indigo-600">
-                Status
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

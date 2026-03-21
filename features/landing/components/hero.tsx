@@ -115,7 +115,9 @@ export function Hero() {
                   <div className="flex items-center gap-2 rounded-lg border border-gray-100 bg-white px-3 py-1 shadow-xs">
                     <Globe className="size-3 text-indigo-500" />
                     <span className="text-[10px] font-semibold text-gray-400">https://</span>
-                    <span className="text-[10px] font-bold text-gray-700">acme-corp.com</span>
+                    <span className="text-[10px] font-bold text-gray-700">
+                      lokeshwardewangan.in
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

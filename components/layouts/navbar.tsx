@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Github } from 'lucide-react';
 import { GradientText } from '@/features/landing/components/gradient-text';
 
 export function Navbar() {
@@ -37,6 +37,14 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
+          <a
+            href="https://github.com/lokeshwardewangan/SiteLense"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex size-9 items-center justify-center rounded-full bg-gray-100 text-gray-800 transition-all hover:bg-gray-200 hover:text-black active:scale-95"
+          >
+            <Github className="size-5 transition-transform group-hover:scale-110" />
+          </a>
           <Link href="/scan">
             <Button
               size="sm"
