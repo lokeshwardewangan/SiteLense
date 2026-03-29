@@ -9,7 +9,9 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "prepare": "husky",
-    "start": "next start"
+    "start": "next start",
+    "build:prod": "bunx open-next build",
+    "deploy": "bunx sst deploy"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
