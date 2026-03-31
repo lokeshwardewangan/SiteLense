@@ -78,11 +78,14 @@ function createPendingScan(url: string, now: number) {
   };
 
   saveScan(record);
-  void runScan(record);
-  return record;
+  const scanPromise = runScan(record);
+  return { record, scanPromise };
 }
 
-export function startScanJob(rawUrl: string): StartScanResponse {
+export function startScanJob(rawUrl: string): {
+  payload: StartScanResponse;
+  scanPromise?: Promise<void>;
+} {
   cleanupExpiredScans();
 
   const normalizedUrl = normalizeUrl(rawUrl.trim());
@@ -91,17 +94,22 @@ export function startScanJob(rawUrl: string): StartScanResponse {
 
   if (reusable) {
     return {
-      scanId: reusable.id,
-      status: reusable.status,
-      reused: true,
+      payload: {
+        scanId: reusable.id,
+        status: reusable.status,
+        reused: true,
+      },
     };
   }
 
-  const record = createPendingScan(normalizedUrl, now);
+  const { record, scanPromise } = createPendingScan(normalizedUrl, now);
   return {
-    scanId: record.id,
-    status: record.status,
-    reused: false,
+    payload: {
+      scanId: record.id,
+      status: record.status,
+      reused: false,
+    },
+    scanPromise,
   };
 }
 
